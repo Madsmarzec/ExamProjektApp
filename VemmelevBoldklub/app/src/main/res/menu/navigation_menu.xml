@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nav_frontPage"
+        android:title="Forside" />
+
+    <item android:id="@+id/nav_leagueTable"
+        android:title="Stilling" />
+
+    <item android:id="@+id/nav_fixtures"
+        android:title="Kampe" />
+
+    <item android:id="@+id/nav_trainingSession"
+        android:title="Træninger" />
+
+    <item android:id="@+id/nav_statistics"
+        android:title="Statistikker" />
+
+</menu>
