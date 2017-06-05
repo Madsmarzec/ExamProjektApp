@@ -1,5 +1,6 @@
 package com.example.madsm.vemmelevboldklub;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -11,8 +12,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.NavigationView;
 import android.view.MenuItem;
+import android.app.FragmentManager;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
@@ -36,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+      /*  fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.main_container, new HomeFragment());
         fragmentTransaction.commit();
         getSupportActionBar().setTitle("Home Fragment...");
@@ -67,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        */
     }
 
     @Override
@@ -77,5 +82,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected (MenuItem item){
+        int id = item.getItemId();
+        FragmentManager fragmentManager = getFragmentManager();
+
+        if(id == R.id.fixture_layout) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.content_frame
+                            , new FixtureActivity())
+                    .commit();
+        }
+
+        mDrawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
