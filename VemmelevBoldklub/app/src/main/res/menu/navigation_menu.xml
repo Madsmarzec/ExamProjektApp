@@ -21,4 +21,7 @@
         android:icon="@drawable/ic_menu_send"
         android:title="Statistikker" />
 
+    <item android:id="@+id/nav_test"
+        android:icon="@drawable/ic_menu_send"
+        android:title="Test" />
 </menu>

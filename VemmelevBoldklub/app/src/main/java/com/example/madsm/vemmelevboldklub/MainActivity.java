@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (mToggle.onOptionsItemSelected(item)){
+        if (mToggle.onOptionsItemSelected(item)) {
             return true;
         }
 
@@ -86,17 +86,15 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected (MenuItem item){
+    public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-        FragmentManager fragmentManager = getFragmentManager();
 
-        if(id == R.id.fixture_layout) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.content_frame
-                            , new FixtureActivity())
-                    .commit();
+        if (id == R.id.nav_test) {
+            Intent i = new Intent(this, TestActivity.class);
+            startActivity(i);
+        } else if (id == R.id.nav_leagueTable) {
+
         }
-
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
