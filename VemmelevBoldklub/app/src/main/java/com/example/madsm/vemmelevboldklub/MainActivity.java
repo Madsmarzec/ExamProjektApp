@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.support.design.widget.NavigationView;
 import android.view.MenuItem;
 import android.app.FragmentManager;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity
@@ -90,8 +91,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_test) {
-            Intent i = new Intent(this, TestActivity.class);
-            startActivity(i);
+            Toast.makeText(MainActivity.this, "Besked", Toast.LENGTH_SHORT).show();
+            //Intent i = new Intent(this, TestActivity.class);
+            //startActivity(i);
         } else if (id == R.id.nav_leagueTable) {
 
         }
