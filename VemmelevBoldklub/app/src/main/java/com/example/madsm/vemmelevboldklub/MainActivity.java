@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.NavigationView;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.app.FragmentManager;
 import android.widget.Toast;
@@ -40,6 +41,9 @@ public class MainActivity extends AppCompatActivity
         mToggle.syncState();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
       /*  fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.main_container, new HomeFragment());
@@ -74,6 +78,22 @@ public class MainActivity extends AppCompatActivity
         });
         */
     }
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -97,6 +117,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_leagueTable) {
 
         }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
