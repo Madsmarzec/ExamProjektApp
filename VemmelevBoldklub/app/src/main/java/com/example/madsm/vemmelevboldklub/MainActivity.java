@@ -23,8 +23,7 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private Toolbar mToolbar;
-    FragmentTransaction fragmentTransaction;
-    NavigationView navigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,14 +109,20 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_test) {
-            Toast.makeText(MainActivity.this, "Besked", Toast.LENGTH_SHORT).show();
-            //Intent i = new Intent(this, TestActivity.class);
-            //startActivity(i);
+        if (id == R.id.nav_fixture) {
+            Intent i = new Intent(this, FixtureActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_leagueTable) {
-
+            Intent i = new Intent(this, LeagueTableActivity.class);
+            startActivity(i);
+        } else if (id == R.id.nav_trainingSession){
+            Intent i = new Intent(this, TrainingActivity.class);
+            startActivity(i);
+        } else if (id == R.id.nav_statistics){
+            Intent i = new Intent(this, StatisticActivity.class);
+            startActivity(i);
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
+        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
