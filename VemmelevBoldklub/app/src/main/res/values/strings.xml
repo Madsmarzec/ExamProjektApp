@@ -5,4 +5,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="table_layout_4_name">name</string>
+    <string name="table_layout_4_goals">goals</string>
+    <string name="table_layout_4_assists">assists</string>
+    <string name="table_layout_4_yellow">yellow</string>
+    <string name="table_layout_4_red">red</string>
 </resources>
