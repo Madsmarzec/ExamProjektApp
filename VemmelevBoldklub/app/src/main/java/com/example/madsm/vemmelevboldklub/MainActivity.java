@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_fixture) {
             Intent i = new Intent(this, FixtureActivity.class);
             startActivity(i);
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_leagueTable) {
             Intent i = new Intent(this, LeagueTableActivity.class);
             startActivity(i);
