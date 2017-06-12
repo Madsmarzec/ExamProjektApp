@@ -1,85 +1,86 @@
 package com.example.madsm.vemmelevboldklub;
 
-import android.app.ActionBar;
-import android.graphics.Color;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.TabLayout;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.Spinner;
-
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.madsm.vemmelevboldklub.mMySQL.Downloader;
-
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URLConnection;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
-import static android.R.attr.id;
-import static android.R.attr.onClick;
+
 
 public class StatisticActivity extends AppCompatActivity {
-
+    String JSON_String;
     private GridView gv;
     private ArrayList<String> players;
     private JSONArray result;
 
     TextView name, goals, assists, yellowCards, redCards;
 
-    final static String urlAddress = "http://adellund.dk/text.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistic);
 
-        final GridView gv = (GridView) findViewById(R.id.gridLayout);
-
-        new Downloader(StatisticActivity.this,urlAddress,gv).execute();
+      //  HttpURLConnectionHandler handler = new HttpURLConnectionHandler();
+      //  String response = handler.sendText("this is a text");
     }
-      /*  String result = null;
-        InputStream is = null;
-        try{
-            /*HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://adellund.dk/text.php");
-            HttpResponse respone = httpclient.execute(httppost);
-            HttpEntity entity = respone.getEntity();
-            is = entity.getContent();
 
-            Log.e("log_tag", "connection_succes");
-        } catch (Exception e){
-            Log.e("log_tag", "Error in http connection" + e.toString());
-            Toast.makeText(getApplicationContext(),"Connection fail", Toast.LENGTH_SHORT).show();
+    public void getJSON(View view){
+        new BackgroundTask().execute();
+    }
+    class BackgroundTask extends AsyncTask<Void, Void, String> {
+
+        String json_url;
+
+        @Override
+        protected void onPreExecute() {
+            json_url = "http://adellund.dk/@mads/text.php";
         }
-        try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"),8);
-            StringBuilder sb = new StringBuilder();
-            String line = null;
-            while((line = reader.readLine()) != null){
-                sb.append(line + "\n");
+
+        @Override
+        protected String doInBackground(Void... params) {
+            try{
+                URL url = new URL(json_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder stringBuilder = new StringBuilder();
+                while ((JSON_String = bufferedReader.readLine()) != null){
+                    stringBuilder.append(JSON_String + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e){
+                e.printStackTrace();
             }
-            is.close();
+            return null;
+        }
 
-            result = sb.toString();
-        }catch (Exception e){
-            Log.e("log_tag", "Error converting result" + e.toString());
-            Toast.makeText(getApplicationContext(),"Input reading fail", Toast.LENGTH_SHORT).show();
-        }*/
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
 
+        @Override
+        protected void onPostExecute(String result) {
+            TextView textView = (TextView) findViewById(R.id.txtStaView);
+            textView.setText(result);
+        }
+    }
 }

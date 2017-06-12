@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tableLayout"
@@ -7,48 +7,32 @@
     android:layout_height="match_parent"
     tools:context="com.example.madsm.vemmelevboldklub.StatisticActivity">
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+    <Button
+        android:id="@+id/btnGetSta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="getJSON"
+        android:layout_alignParentTop="true"
+        android:text="Hent Statistik" />
 
-        <TextView
-            android:id="@+id/nameTr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Name"
-            android:textAlignment="center" />
+    <Button
+        android:id="@+id/btnParseSta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnGetSta"
+        android:onClick="parseJSON"
+        android:layout_toEndOf="@+id/btnGetSta"
+        android:layout_toRightOf="@+id/btnGetSta"
+        android:text="Parse Statistik" />
 
-        <TextView
-            android:id="@+id/GoalsTr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Goals"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/AssistTr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Assists"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/yellowTr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="YellowCards"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/redTr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="RedCards"
-            android:textAlignment="center" />
-    </TableRow>
-</TableLayout>
+    <TextView
+        android:id="@+id/txtStaView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btnGetSta"
+        android:text="JSON Appears here" />
+</RelativeLayout>
