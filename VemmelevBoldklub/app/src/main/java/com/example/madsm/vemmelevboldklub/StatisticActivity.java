@@ -46,7 +46,7 @@ public class StatisticActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            json_url = "http://adellund.dk/@mads/text.php";
+            json_url = "http://adellund.dk/@mads/statistic.php";
         }
 
         @Override

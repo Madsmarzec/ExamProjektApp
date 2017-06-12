@@ -16,7 +16,7 @@
         tools:layout_editor_absoluteY="129dp" />
 
     <Button
-        android:id="@+id/btnGetJSON"
+        android:id="@+id/btnGetTra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="getJSON"
@@ -26,16 +26,16 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:id="@+id/txtJSON"
+        android:id="@+id/txtTraView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="JSON appears here"
-        android:layout_below="@+id/btnGetJSON"
+        android:layout_below="@+id/btnGetTra"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <Button
-        android:id="@+id/btnParseJSON"
+        android:id="@+id/btnParseTra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="parseJSON"

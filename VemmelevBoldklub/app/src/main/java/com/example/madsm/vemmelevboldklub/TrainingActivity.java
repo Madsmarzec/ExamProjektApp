@@ -64,7 +64,7 @@ public class TrainingActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            TextView textView = (TextView) findViewById(R.id.txtJSON);
+            TextView textView = (TextView) findViewById(R.id.txtTraView);
             textView.setText(result);
         }
     }
